@@ -36,8 +36,8 @@ testTree(1,
                     ),
             3, tree3(c, 0, none, 0, none, 0, none),  % Middle child of a is c. It is a leaf node
             1, tree3(d,   % Right child of a is d
-                    2, tree(g, 0, none, 0, none,   % Left child of d is g. It has no left or middle child
-                            1, tree(h, 0, none, 0, none, 0, none)),   % The right child of g is h. It is a leaf node
+                    2, tree3(g, 0, none, 0, none,   % Left child of d is g. It has no left or middle child
+                            1, tree3(h, 0, none, 0, none, 0, none)),   % The right child of g is h. It is a leaf node
                     0, none, 0, none  % d has no middle or right children
                     )
         )
