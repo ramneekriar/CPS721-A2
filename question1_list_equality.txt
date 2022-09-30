@@ -1,0 +1,104 @@
+1. [X, Y | Z] and [p, q, r, s, t | [u, v, Y] ]
+
+[p, q, r, s, t | [u, v, Y] ]
+= [p, q, r, s, t , u, v, Y ]
+= [p, q, r, s, t , u, v, Y]  
+= [p, q |[r, s, t , u, v, Y] ]
+
+X = p
+Y = q
+Z = [r, s, t , u, v, Y]
+
+EQUAL
+
+2. [a,[Y|[b, c]], d] and [a,[b,[b,c]]|Z]
+
+[a,[ Y | [b, c] ], d]
+= [a, [Y, b, c], d ]
+= [a, [Y, b, c] ] | [d] ]
+
+[a,[b,[b,c]]| Z]
+= [a, [b, [b, c] ] | Z ]
+
+NOT EQUAL
+
+a matches a, and Z matches [d], but Y cannot match anyone.
+
+3. [yyz | [yow | [yyc| [yvr| [yul|[YEG]]]]]] and [A1,A2|A3].
+
+[yyz | [yow | [yyc| [yvr| [yul|[YEG]]]]]]
+= [ yyz, yow, yyc, yvr, yul, YEG ]
+= [ yyz, yow | [yyc, yvr, yul, YEG ] ]
+
+EQUAL
+
+A1 = yyz
+A2 = yow
+A3 = [yyc, yvr, yul, YEG ] 
+
+4. [apple, Z, bee | [Z, car, door] ] and [X | [bee, Y | [Q | R ] ] ]
+
+[apple, Z, bee | [Z, car, door] ]
+= [apple, Z, bee, Z, car, door ]
+ 
+[X | [bee, Y | [Q | R ] ] ]
+= [X, bee, Y, Q | R ]
+
+EQUAL
+
+X = apple
+Z = bee
+Y = bee
+Z = Q = bee
+R = [car, door]
+
+5. [Z|[Z|[[Z|[[Z]]]]]] and [b|Y]
+[Z|[Z|[[Z|[[Z]]]]]]
+= [Z, Z|[[Z|[[Z]]]]]
+= [Z, Z, [Z|[[Z]]]]
+= [Z, Z, [ Z, [Z]]]
+= [Z | [Z, [ Z, [Z]]]] 
+
+EQUAL
+
+Z = b
+Y = [ [Z, [ Z, [Z] ] ]
+
+6. [U|[W| [U]]] and [the,quick,brown,fox,W]
+
+[U|[W| [U]]]
+= [ U, W | [ U ] ]
+= [ U, W, U ]
+
+NOT EQUAL
+
+If U = the and W = quick, then the list does not equal pairwise.
+
+7. [first|[U|[[R]|U]]] and [Q, [], [Q]| U]
+
+[first|[U|[[R]|U]]]
+= [first|[U|[[R]|U]]]
+= [first, U|[[R]|U]] 
+= [first, U, [R]|U] 
+= [first, U, [R] | U ] 
+
+EQUAL
+
+Q = R = first
+U = []
+
+8. [Did|[[An, X]|[ever,Win, An,X]]] and [Only, [One, oscar] | [Did, X, hammerstein, TheSecond] ]
+
+[Did|[[An, X]|[ever,Win, An,X]]] 
+= [Did, [An, X]|[ever,Win, An,X]]
+= [Did, [An, X], ever, Win, An, X]
+
+[Only, [One, oscar] | [Did, X, hammerstein, TheSecond] ]
+= [Only, [One, oscar], Did, X, hammerstein, TheSecond]
+
+EQUAL
+
+Did = Only = ever
+An = One = hammerstein
+X = Win = TheSecond = oscar
+

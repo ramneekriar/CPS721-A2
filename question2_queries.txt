@@ -1,0 +1,5 @@
+listMap([a, b, c, d], [1, 2, 3, 4], c, 3).
+listMap([hello,yes], [goodbye, no], yes, X).
+
+listMap([a, b, c, d], [1, 2, 3, 4], c, 4).
+listMap([hello,yes], [goodbye, no],  a, X).

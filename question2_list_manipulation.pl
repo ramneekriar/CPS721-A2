@@ -14,6 +14,8 @@
 %%%%% RULE: listMap
 % Add the rule(s) for part a below
 
+listMap([Key | KeyTail], [Value | ValueTail], Key, Value). 
+listMap([KeyHead | KeyTail], [ValueHead | ValueTail], Key, Value) :- listMap(KeyTail, ValueTail, Key, Value).
 
 %%%%% RULE: encodeList
 % Add the rule(s) for part b below
