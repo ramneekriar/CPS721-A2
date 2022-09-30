@@ -13,13 +13,18 @@
 
 %%%%% RULE: listMap
 % Add the rule(s) for part a below
+% listMap(KeysList, ValuesMap, Key, Value)
+% Check if Key and Value are in the same spot in their respective lists
 
 listMap([Key | KeyTail], [Value | ValueTail], Key, Value). 
 listMap([KeyHead | KeyTail], [ValueHead | ValueTail], Key, Value) :- listMap(KeyTail, ValueTail, Key, Value).
 
 %%%%% RULE: encodeList
 % Add the rule(s) for part b below
+% encodeList(List, MapKeysList, MapValuesList, EncodedList)
 
+encodeList([], MapKeysList, MapValuesList, EncodedList).
+encodeList([ListHead|ListTail], MapKeysList, MapValuesList, [EncodedHead|EncodedTail]) :- listMap(MapKeysList, MapValuesList, ListHead, EncodedVal), encodeList(ListTail, MapKeysList, MapValuesList, [EncodedVal|EncodedTail]).
 
 %%%%% RULE: consecutiveCount
 %  Add the rule(s) for part c below 
