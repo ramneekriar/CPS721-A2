@@ -11,3 +11,14 @@ encodeList([c, a, g, e], [a, b, c, d, e, f, g], [g, f, e, d, c, b, a],  X).
 
 encodeList([a, a, c, b], [a, b, c, d], [1, 2, 3, 4], [1, 2, 3, 2]).
 encodeList([r, a, g, e], [a, b, c, d, e, f, g], [g, f, e, d, c, b, a], X).
+
+% 2C
+% The following should succeed
+consecutiveCount([a, a, c, b, b, e, g], 2).
+consecutiveCount([a,  b, c, d, e, f, g], 0).
+consecutiveCount([a, a, c, big, big, big, ear, gold, gold], X).
+Yes with X = 4
+
+% The following should fail
+consecutiveCount([a, a, c, b, b, e, g], 1).
+consecutiveCount([a, a, c, big, big, big, ear, gold, gold], 2).
