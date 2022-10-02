@@ -32,8 +32,6 @@ consecutiveCount([], 0).
 consecutiveCount([Head], 0).
 consecutiveCount([Head1, Head2 | Tail], Count) :- \+ Head1=Head2, consecutiveCount([Head2|Tail], Count).
 consecutiveCount([Head1, Head2 | Tail], Count) :- consecutiveCount([Head2|Tail], OtherCount), Head1=Head2, Count is 1 + OtherCount.
-%consecutiveCount([Head|Tail], Count) :- consecutiveCount(Tail, OtherCount), Head=TailHead, Count is 1 + OtherCount.
-%consecutiveCount([Head|[TailHead|Tail]], Count) :- consecutiveCount([TailHead|Tail], OtherCount), Head=TailHead, Count is 1 + OtherCount.
 
 %%%%% RULE: splitOnInt
 %  Add the rule(s) for part d below 
