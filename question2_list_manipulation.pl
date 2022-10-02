@@ -41,7 +41,8 @@ splitOnInt([ListHead|ListTail], Value, NoLargerList, [ListHead|LargerTail]) :- L
 
 %%%%% RULE: incAverage
 % Add the rule(s) for part e below
-
+incAverage([], 0, 0).
+incAverage([Head|Tail], Average, NumElements) :- incAverage(Tail, PrevAverage, ElemCount), NumElements is ElemCount + 1, Average is (PrevAverage + ((Head - PrevAverage) / NumElements)).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW

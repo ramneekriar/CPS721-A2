@@ -32,3 +32,12 @@ splitOnInt([24, 67, 45], 67, [24, 67, 45], []).
 % The following should fail
 splitOnInt([45, 67, 23, 100, 0, 1578], 99, [45, 67,0], [100, 1578, 23]).
 splitOnInt([45, 67, 23, 100, 0, 1578], 99, [45, 67,0], X).
+
+% 2E
+% The following should succeed
+incAverage([1, 2, 3, 4, 5],Av,Num).
+    Yes with Av = 3 and Num = 5.
+    
+% The following should fail
+incAverage([1, 2, 3, 4, 5],4,5).
+incAverage([1, 2, 3, 4, 5],3,2).
