@@ -14,10 +14,27 @@
 %%%%% Helper Programs
 % Put any helper programs in the space below
 
+% Left has highest cost
+findHighestCost(LeftCost, MiddleCost, RightCost, HighestCost) :- LeftCost >= MiddleCost, LeftCost >= RightCost, HighestCost is LeftCost.
+
+% Middle has highest cost
+findHighestCost(LeftCost, MiddleCost, RightCost, HighestCost) :- MiddleCost >= LeftCost, MiddleCost >= RightCost, HighestCost is MiddleCost.
+
+% Right has highest cost
+findHighestCost(LeftCost, MiddleCost, RightCost, HighestCost) :- RightCost >= MiddleCost, RightCost >= LeftCost, HighestCost is RightCost.
 
 %%%%% RULE: highestCostPath
 % Add the rule(s) for highestCostPath below
 
+% Empty
+highestCostPath(none, 0, []).
+
+highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Name|Tail]) :- highestCostPath(Left, LeftTotalCost, [Tail]), 
+                                                                                                        highestCostPath(Right, RightTotalCost, [Tail]),
+                                                                                                        PathCost is  
+
+
+highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Head|Tail]) :- 
 
 %%%%% TESTS
 % Below is a test tree, based on the diagram in the assignment
