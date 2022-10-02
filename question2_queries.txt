@@ -22,3 +22,13 @@ Yes with X = 4
 % The following should fail
 consecutiveCount([a, a, c, b, b, e, g], 1).
 consecutiveCount([a, a, c, big, big, big, ear, gold, gold], 2).
+
+% 2D
+% The following should succeed
+splitOnInt([45, 67, 23, 100, 0, 1578], 99, X, Y).
+    Yes with X = [45, 67,23, 0] and Y =[100, 1578]
+splitOnInt([24, 67, 45], 67, [24, 67, 45], []).
+
+% The following should fail
+splitOnInt([45, 67, 23, 100, 0, 1578], 99, [45, 67,0], [100, 1578, 23]).
+splitOnInt([45, 67, 23, 100, 0, 1578], 99, [45, 67,0], X).

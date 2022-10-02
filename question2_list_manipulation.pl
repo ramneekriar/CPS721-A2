@@ -35,7 +35,9 @@ consecutiveCount([Head1, Head2 | Tail], Count) :- consecutiveCount([Head2|Tail],
 
 %%%%% RULE: splitOnInt
 %  Add the rule(s) for part d below 
-
+splitOnInt([], Value, [], []).
+splitOnInt([ListHead|ListTail], Value, [ListHead|SmallerTail], NoSmallerList) :- ListHead =< Value, splitOnInt(ListTail, Value, SmallerTail, NoSmallerList).
+splitOnInt([ListHead|ListTail], Value, NoLargerList, [ListHead|LargerTail]) :- ListHead > Value, splitOnInt(ListTail, Value, NoLargerList, LargerTail).
 
 %%%%% RULE: incAverage
 % Add the rule(s) for part e below
