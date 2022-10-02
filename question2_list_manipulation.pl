@@ -23,8 +23,8 @@ listMap([KeyHead | KeyTail], [ValueHead | ValueTail], Key, Value) :- listMap(Key
 % Add the rule(s) for part b below
 % encodeList(List, MapKeysList, MapValuesList, EncodedList)
 
-encodeList([], MapKeysList, MapValuesList, EncodedList).
-encodeList([ListHead|ListTail], MapKeysList, MapValuesList, [EncodedHead|EncodedTail]) :- listMap(MapKeysList, MapValuesList, ListHead, EncodedVal), encodeList(ListTail, MapKeysList, MapValuesList, [EncodedVal|EncodedTail]).
+encodeList([], MapKeysList, MapValuesList, []).
+encodeList([ListHead|ListTail], MapKeysList, MapValuesList, [EncodedVal|EncodedTail]) :- listMap(MapKeysList, MapValuesList, ListHead, EncodedVal), encodeList(ListTail, MapKeysList, MapValuesList, EncodedTail).
 
 %%%%% RULE: consecutiveCount
 %  Add the rule(s) for part c below 
