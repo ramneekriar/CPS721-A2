@@ -1,0 +1,3 @@
+4A
+listLength(listTerm(empty_list, empty_list), X).
+listLength(listTerm(4, listTerm(5, listTerm(2, listTerm(8, empty_list)))), X).

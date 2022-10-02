@@ -14,6 +14,9 @@
 %%%%% RULE: listLength
 % Add the rule(s) for listLength below
 
+listLength(listTerm(empty_list, empty_list), 0).
+listLength(listTerm(H, empty_list), 1).
+listLength(listTerm(H, T), X) :- listLength(T, M), X is 1 + M.
 
 %%%%% RULE: divideList
 % Add the rule(s) for divideList below
