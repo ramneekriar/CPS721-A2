@@ -28,12 +28,16 @@ divideList(ListTerm, Num, FirstHalf, SecondHalf) :- acc(ListTerm, Num, empty_lis
 
 %%%%% RULE: mergeSortedLists
 % Add the rule(s) for mergeSortedLists below
+% mergeSortedLists(SortedListTerm1, SortedListTerm2, MergedList)
 
+mergeSortedLists(empty_list, empty_list, empty_list).
+mergeSortedLists(empty_list, LT, LT).
+mergeSortedLists(LT, empty_list, LT).
 
 %%%%% Helpers
 % Add any additional helpers below
 
-% divideList Helper
+% divideList Helpers
 acc(ListTerm, 0, FirstHalf, FirstHalf, ListTerm).
 acc(listTerm(H, T), Num, FH_listTerm, FirstHalf, SecondHalf) :- Num > 0, New_Num is (Num - 1), acc(T, New_Num, listTerm(H, FH_listTerm), FirstHalf, SecondHalf).  
 
