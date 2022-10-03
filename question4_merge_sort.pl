@@ -23,8 +23,8 @@ listLength(listTerm(H, T), X) :- listLength(T, M), X is 1 + M.
 % divideList(ListTerm, Num, FirstHalf, SecondHalf)
 % FirstHalf contains first Num elements of ListTerm, and SecondHalf contains the remaining.
 
-divideList(listTerm(empty_list, empty_list), 0, listTerm(empty_list, empty_list), listTerm(empty_list, empty_list)).
-divideList(ListTerm, Num, FirstHalf, SecondHalf) :- acc(ListTerm, Num, [], FirstHalf, SecondHalf).
+divideList(listTerm(empty_list, empty_list), Num, listTerm(empty_list, empty_list), listTerm(empty_list, empty_list)).
+divideList(ListTerm, Num, FirstHalf, SecondHalf) :- acc(ListTerm, Num, empty_list, FirstHalf_Rev, SecondHalf), reverseListTerm(FirstHalf_Rev, FirstHalf).
 
 %%%%% RULE: mergeSortedLists
 % Add the rule(s) for mergeSortedLists below
@@ -35,8 +35,11 @@ divideList(ListTerm, Num, FirstHalf, SecondHalf) :- acc(ListTerm, Num, [], First
 
 % divideList Helper
 acc(ListTerm, 0, FirstHalf, FirstHalf, ListTerm).
-acc(listTerm(H, T), Num, FH_listTerm, FirstHalf, SecondHalf) :- Num > 1, New_Num is (Num - 1), acc(T, New_Num, listTerm(FH_listTerm, H), FirstHalf, SecondHalf). 
-acc(listTerm(H, T), Num, FH_listTerm, FirstHalf, SecondHalf) :- Num = 1, New_Num is (Num - 1), acc(T, New_Num, listTerm(FH_listTerm, listTerm(H, empty_list)), FirstHalf, SecondHalf). 
+acc(listTerm(H, T), Num, FH_listTerm, FirstHalf, SecondHalf) :- Num > 0, New_Num is (Num - 1), acc(T, New_Num, listTerm(H, FH_listTerm), FirstHalf, SecondHalf).  
+
+reverseListTerm(LT1, LT2) :- rev(LT1, empty_list, LT2).
+rev(empty_list, LT, LT).
+rev(listTerm(H, T), FH_listTerm, FirstHalf) :- rev(T, listTerm(H, FH_listTerm), FirstHalf).
 
 %%%%% RULE: mergeSort
 % Add the rule(s) for mergeSort below

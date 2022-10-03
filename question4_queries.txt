@@ -4,4 +4,15 @@ listLength(listTerm(4, listTerm(5, listTerm(2, listTerm(8, empty_list)))), X).
 
 4B
 [8, 4, 3, 2, 1, 0], FirstHalf = [8, 4, 3], SecondHalf = [2, 1, 0]
-divideList(listTerm(8, listTerm(4, listTerm(3, listTerm(2, listTerm(1, listTerm(0, empty_list)))))), 3, X, Y).
+?- divideList(listTerm(8, listTerm(4, listTerm(3, listTerm(2, listTerm(1, listTerm(0, empty_list)))))), 3, X, Y).
+X = listTerm(8, listTerm(4, listTerm(3, empty_list)))
+Y = listTerm(2, listTerm(1, listTerm(0, empty_list)))
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.07s cpu)
+
+[], FirstHalf = [], SecondHalf = []
+?- divideList(listTerm(empty_list, empty_list), 4, X, Y).
+X = listTerm(empty_list, empty_list)
+Y = listTerm(empty_list, empty_list)
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.02s cpu)
