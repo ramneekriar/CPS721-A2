@@ -34,6 +34,8 @@ mergeSortedLists(empty_list, empty_list, empty_list).
 mergeSortedLists(empty_list, LT, LT).
 mergeSortedLists(LT, empty_list, LT).
 
+mergeSortedLists(LT1, LT2, MergedList) :- makeSortedListTerm(LT1, LT2, empty_list, MergedList_Rev), reverseListTerm(MergedList_Rev, MergedList).
+
 %%%%% Helpers
 % Add any additional helpers below
 
@@ -44,6 +46,13 @@ acc(listTerm(H, T), Num, FH_listTerm, FirstHalf, SecondHalf) :- Num > 0, New_Num
 reverseListTerm(LT1, LT2) :- rev(LT1, empty_list, LT2).
 rev(empty_list, LT, LT).
 rev(listTerm(H, T), FH_listTerm, FirstHalf) :- rev(T, listTerm(H, FH_listTerm), FirstHalf).
+
+% mergeSortedList Helpers
+makeSortedListTerm(empty_list, empty_list, MergedList, MergedList).
+makeSortedListTerm(LT1, empty_list, MergedList, listTerm(LT1, MergedList)).
+makeSortedListTerm(empty_list, LT2, MergedList, listTerm(LT2, MergedList)).
+makeSortedListTerm(listTerm(H1, T1), listTerm(H2, T2), MergedAcc, MergedList) :- H1 < H2, makeSortedListTerm(T1, listTerm(H2, T2), listTerm(H1, MergedAcc), MergedList).
+makeSortedListTerm(listTerm(H1, T1), listTerm(H2, T2), MergedAcc, MergedList) :- H1 >= H2, makeSortedListTerm(listTerm(H1, T1), T2, listTerm(H2, MergedAcc), MergedList).
 
 %%%%% RULE: mergeSort
 % Add the rule(s) for mergeSort below

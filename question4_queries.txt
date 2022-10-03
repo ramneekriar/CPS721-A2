@@ -16,3 +16,7 @@ X = listTerm(empty_list, empty_list)
 Y = listTerm(empty_list, empty_list)
 Yes (0.00s cpu, solution 1, maybe more)
 No (0.02s cpu)
+
+4C
+SortedList1 = [1, 2, 5], SortedList2 = [3, 4, 6]
+?- mergeSortedLists(listTerm(1, listTerm(2, listTerm(5, empty_list))), listTerm(3, listTerm(4, listTerm(6, empty_list))), X).
