@@ -14,27 +14,43 @@
 %%%%% Helper Programs
 % Put any helper programs in the space below
 
+% Finding maximum between two costs
+% findHighestCost(CurrCost, NewCost, HighestCost) :- CurrCost >= NewCost, HighestCost is CurrCost.
+% findHighestCost(CurrCost, NewCost, HighestCost) :- NewCost >= CurrCost, HighestCost is NewCost.
+
 % Left has highest cost
-findHighestCost(LeftCost, MiddleCost, RightCost, HighestCost) :- LeftCost >= MiddleCost, LeftCost >= RightCost, HighestCost is LeftCost.
+findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- LeftCost >= MiddleCost, LeftCost >= RightCost, HighestCost is LeftCost, PathList=LeftPathList.
 
 % Middle has highest cost
-findHighestCost(LeftCost, MiddleCost, RightCost, HighestCost) :- MiddleCost >= LeftCost, MiddleCost >= RightCost, HighestCost is MiddleCost.
+findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- MiddleCost >= LeftCost, MiddleCost >= RightCost, HighestCost is MiddleCost, PathList=RightPathList.
 
 % Right has highest cost
-findHighestCost(LeftCost, MiddleCost, RightCost, HighestCost) :- RightCost >= MiddleCost, RightCost >= LeftCost, HighestCost is RightCost.
+findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- RightCost >= MiddleCost, RightCost >= LeftCost, HighestCost is RightCost, PathList=MiddlePathList.
 
 %%%%% RULE: highestCostPath
 % Add the rule(s) for highestCostPath below
 
 % Empty
 highestCostPath(none, 0, []).
+highestCostPath(tree3(Name, 0, none, 0, none, 0, none), 0, [Name]).
 
-highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Name|Tail]) :- highestCostPath(Left, LeftTotalCost, [Tail]), 
-                                                                                                        highestCostPath(Right, RightTotalCost, [Tail]),
-                                                                                                        PathCost is  
+% Traverse Left
+highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Name|Tail]) :- highestCostPath(Left, LeftTotalCost, LeftPathList), 
+                                                                                                                highestCostPath(Right, RightTotalCost, RightPathList), 
+                                                                                                                highestCostPath(Middle, MiddleTotalCost, MiddlePathList),
+                                                                                                                LC is LeftTotalCost + LeftCost,
+                                                                                                                RC is RightTotalCost + RightCost,
+                                                                                                                MC is MiddleTotalCost + MiddleCost,
+                                                                                                                findHighestCost(LC, RC, MC, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList),
+                                                                                                                PathCost is HighestCost,
+                                                                                                                Tail=PathList.
 
 
-highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Head|Tail]) :- 
+% Traverse Right
+% highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Head|Tail]) :- highestCostPath(Right, RightTotalCost, [Tail]).
+
+% Traverse Middle
+% highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Head|Tail]) :- highestCostPath(Middle, MiddleTotalCost, [Tail]).
 
 %%%%% TESTS
 % Below is a test tree, based on the diagram in the assignment
@@ -59,5 +75,14 @@ testTree(1,
                     )
         )
 ).
+
+testTree(2,
+    tree3(a,
+            2, tree3(b, 0, none, 0, none, 0, none),
+            3, tree3(c, 0, none, 0, none, 0, none),
+            1, tree3(d, 0, none, 0, none, 0, none)
+    )
+).
+
 %%%%% END
 % DO NOT PUT ANY LINES BELOW
