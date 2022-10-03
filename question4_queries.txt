@@ -1,3 +1,7 @@
 4A
 listLength(listTerm(empty_list, empty_list), X).
 listLength(listTerm(4, listTerm(5, listTerm(2, listTerm(8, empty_list)))), X).
+
+4B
+[8, 4, 3, 2, 1, 0], FirstHalf = [8, 4, 3], SecondHalf = [2, 1, 0]
+divideList(listTerm(8, listTerm(4, listTerm(3, listTerm(2, listTerm(1, listTerm(0, empty_list)))))), 3, X, Y).
