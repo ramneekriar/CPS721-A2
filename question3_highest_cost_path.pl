@@ -14,10 +14,6 @@
 %%%%% Helper Programs
 % Put any helper programs in the space below
 
-% Finding maximum between two costs
-% findHighestCost(CurrCost, NewCost, HighestCost) :- CurrCost >= NewCost, HighestCost is CurrCost.
-% findHighestCost(CurrCost, NewCost, HighestCost) :- NewCost >= CurrCost, HighestCost is NewCost.
-
 % Left has highest cost
 findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- LeftCost >= MiddleCost, LeftCost >= RightCost, HighestCost is LeftCost, PathList=LeftPathList.
 
@@ -44,13 +40,6 @@ highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Rig
                                                                                                                 findHighestCost(LC, RC, MC, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList),
                                                                                                                 PathCost is HighestCost,
                                                                                                                 Tail=PathList.
-
-
-% Traverse Right
-% highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Head|Tail]) :- highestCostPath(Right, RightTotalCost, [Tail]).
-
-% Traverse Middle
-% highestCostPath(tree3(Name,  LeftCost, Left,  MiddleCost, Middle, RightCost, Right), PathCost, [Head|Tail]) :- highestCostPath(Middle, MiddleTotalCost, [Tail]).
 
 %%%%% TESTS
 % Below is a test tree, based on the diagram in the assignment
