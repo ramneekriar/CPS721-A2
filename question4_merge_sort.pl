@@ -28,7 +28,6 @@ divideList(ListTerm, Num, FirstHalf, SecondHalf) :- acc(ListTerm, Num, empty_lis
 
 %%%%% RULE: mergeSortedLists
 % Add the rule(s) for mergeSortedLists below
-% mergeSortedLists(SortedListTerm1, SortedListTerm2, MergedList)
 
 mergeSortedLists(empty_list, empty_list, empty_list).
 mergeSortedLists(empty_list, LT, LT).
@@ -57,6 +56,14 @@ makeSortedListTerm(listTerm(H1, T1), listTerm(H2, T2), MergedAcc, MergedList) :-
 %%%%% RULE: mergeSort
 % Add the rule(s) for mergeSort below
 
+mergeSort(empty_list, empty_list).
+mergeSort(listTerm(X, empty_list), listTerm(X, empty_list)).
+mergeSort(ListTerm, SortedListTerm) :- listLength(ListTerm, Len), 
+                                    X is (Len // 2), 
+                                    divideList(ListTerm, X, FirstHalf, SecondHalf), 
+                                    mergeSort(FirstHalf, SortedFirstHalf), 
+                                    mergeSort(SecondHalf, SortedSecondHalf),
+                                    mergeSortedLists(SortedFirstHalf, SortedSecondHalf, SortedListTerm).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW

@@ -1,8 +1,8 @@
-4A
+4A --> listLength
 listLength(listTerm(empty_list, empty_list), X).
 listLength(listTerm(4, listTerm(5, listTerm(2, listTerm(8, empty_list)))), X).
 
-4B
+4B --> divideList
 [8, 4, 3, 2, 1, 0], FirstHalf = [8, 4, 3], SecondHalf = [2, 1, 0]
 ?- divideList(listTerm(8, listTerm(4, listTerm(3, listTerm(2, listTerm(1, listTerm(0, empty_list)))))), 3, X, Y).
 X = listTerm(8, listTerm(4, listTerm(3, empty_list)))
@@ -17,7 +17,7 @@ Y = listTerm(empty_list, empty_list)
 Yes (0.00s cpu, solution 1, maybe more)
 No (0.02s cpu)
 
-4C
+4C --> mergeSortedLists
 SortedList1 = [1, 2, 5], SortedList2 = [3, 4, 6]
 ?- mergeSortedLists(listTerm(1, listTerm(2, listTerm(5, empty_list))), listTerm(3, listTerm(4, listTerm(6, empty_list))), X).
 X = listTerm(1, listTerm(2, listTerm(3, listTerm(4, listTerm(5, listTerm(6, empty_list))))))
@@ -51,3 +51,21 @@ Yes (0.00s cpu, solution 1, maybe more)
 X = listTerm(11, listTerm(21, listTerm(52, empty_list)))
 Yes (0.04s cpu, solution 2, maybe more)
 No (0.04s cpu)
+
+4D --> mergeSorted
+?- mergeSort(listTerm(4, listTerm(5, listTerm(2, listTerm(8, empty_list)))), X).
+X = listTerm(2, listTerm(4, listTerm(5, listTerm(8, empty_list))))
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- mergeSort(empty_list, X).
+X = empty_list
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.03s cpu)
+
+?- mergeSort(listTerm(4, empty_list), X).
+X = listTerm(4, empty_list)
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- mergeSort(listTerm(100, listTerm(1, listTerm(34, listTerm(12, listTerm(2, listTerm(102, listTerm(43, empty_list))))))), X).
+X = listTerm(1, listTerm(2, listTerm(12, listTerm(34, listTerm(43, listTerm(100, listTerm(102, empty_list)))))))
+Yes (0.00s cpu, solution 1, maybe more)
