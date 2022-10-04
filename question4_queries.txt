@@ -20,3 +20,34 @@ No (0.02s cpu)
 4C
 SortedList1 = [1, 2, 5], SortedList2 = [3, 4, 6]
 ?- mergeSortedLists(listTerm(1, listTerm(2, listTerm(5, empty_list))), listTerm(3, listTerm(4, listTerm(6, empty_list))), X).
+X = listTerm(1, listTerm(2, listTerm(3, listTerm(4, listTerm(5, listTerm(6, empty_list))))))
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.02s cpu)
+
+SortedList1 = [1, 4], SortedList2 = [2, 3]
+?- mergeSortedLists(listTerm(1, listTerm(4, empty_list)), listTerm(2, listTerm(3, empty_list)), X).
+X = listTerm(1, listTerm(2, listTerm(3, listTerm(4, empty_list))))
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.03s cpu)
+
+SortedList1 = [1, 3], SortedList2 = [2]
+?- mergeSortedLists(listTerm(1, listTerm(3, empty_list)), listTerm(2, empty_list), X).
+X = listTerm(1, listTerm(2, listTerm(3, empty_list)))
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.03s cpu)
+
+SortedList1 = [], SortedList2 = [1, 2, 3]
+?- mergeSortedLists(empty_list, listTerm(1, listTerm(2, listTerm(3, empty_list))), X).
+X = listTerm(1, listTerm(2, listTerm(3, empty_list)))
+Yes (0.00s cpu, solution 1, maybe more)
+X = listTerm(1, listTerm(2, listTerm(3, empty_list)))
+Yes (0.02s cpu, solution 2, maybe more)
+No (0.03s cpu)
+
+SortedList1 = [11, 21, 52], SortedList2 = []
+?- mergeSortedLists(listTerm(11, listTerm(21, listTerm(52, empty_list))), empty_list, X).
+X = listTerm(11, listTerm(21, listTerm(52, empty_list)))
+Yes (0.00s cpu, solution 1, maybe more)
+X = listTerm(11, listTerm(21, listTerm(52, empty_list)))
+Yes (0.04s cpu, solution 2, maybe more)
+No (0.04s cpu)

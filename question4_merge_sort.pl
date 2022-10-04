@@ -49,8 +49,8 @@ rev(listTerm(H, T), FH_listTerm, FirstHalf) :- rev(T, listTerm(H, FH_listTerm), 
 
 % mergeSortedList Helpers
 makeSortedListTerm(empty_list, empty_list, MergedList, MergedList).
-makeSortedListTerm(LT1, empty_list, MergedList, listTerm(LT1, MergedList)).
-makeSortedListTerm(empty_list, LT2, MergedList, listTerm(LT2, MergedList)).
+makeSortedListTerm(listTerm(H, T), empty_list, MergedAcc, MergedList) :- makeSortedListTerm(T, empty_list, listTerm(H, MergedAcc), MergedList).
+makeSortedListTerm(empty_list, listTerm(H, T), MergedAcc, MergedList) :- makeSortedListTerm(empty_list, T, listTerm(H, MergedAcc), MergedList).
 makeSortedListTerm(listTerm(H1, T1), listTerm(H2, T2), MergedAcc, MergedList) :- H1 < H2, makeSortedListTerm(T1, listTerm(H2, T2), listTerm(H1, MergedAcc), MergedList).
 makeSortedListTerm(listTerm(H1, T1), listTerm(H2, T2), MergedAcc, MergedList) :- H1 >= H2, makeSortedListTerm(listTerm(H1, T1), T2, listTerm(H2, MergedAcc), MergedList).
 
