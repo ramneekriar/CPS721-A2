@@ -15,13 +15,13 @@
 % Put any helper programs in the space below
 
 % Left has highest cost
-findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- LeftCost >= MiddleCost, LeftCost >= RightCost, HighestCost is LeftCost, PathList=LeftPathList.
+findHighestCost(LeftCost, RightCost, MiddleCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- LeftCost >= MiddleCost, LeftCost >= RightCost, HighestCost is LeftCost, PathList=LeftPathList.
 
 % Middle has highest cost
-findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- MiddleCost >= LeftCost, MiddleCost >= RightCost, HighestCost is MiddleCost, PathList=RightPathList.
+findHighestCost(LeftCost, RightCost, MiddleCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- MiddleCost >= LeftCost, MiddleCost >= RightCost, HighestCost is MiddleCost, PathList=MiddlePathList.
 
 % Right has highest cost
-findHighestCost(LeftCost, MiddleCost, RightCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- RightCost >= MiddleCost, RightCost >= LeftCost, HighestCost is RightCost, PathList=MiddlePathList.
+findHighestCost(LeftCost, RightCost, MiddleCost, LeftPathList, RightPathList, MiddlePathList, HighestCost, PathList) :- RightCost >= MiddleCost, RightCost >= LeftCost, HighestCost is RightCost, PathList=RightPathList.
 
 %%%%% RULE: highestCostPath
 % Add the rule(s) for highestCostPath below
